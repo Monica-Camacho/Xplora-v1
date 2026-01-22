@@ -23,38 +23,59 @@ $font-title: 'Mulish', sans-serif;
 
 // Estilos personalizados
 
-// Header
-
+// Header Superior
 .header-top {
-    background-color: $white;
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+  background-color: $white;
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 
-      img {
-        width: 80px;
-        height: auto;
-      }
+    img {
+      height: 40px; 
+      width: auto; // El ancho se ajusta solo
 
-      .app-name {
-        font-family: $font-title;
-        color: $highlight-color;
-        font-weight: bold;
-        font-size: 1.5rem;
-        text-decoration: none;
+      // RESPONSIVO: En celular lo hacemos un poquito más compacto
+      @media (max-width: 768px) {
+        height: 30px; 
       }
     }
-    .language, .contact, .social-icons a {
-      color: $black;
-      margin-left: 15px;
-      font-family: $font-general;
+
+    .app-name {
+      font-family: $font-title;
+      color: $highlight-color;
+      font-weight: bold;
+      font-size: 1.5rem; // Tamaño normal
       text-decoration: none;
-      &:hover {
-        color: $highlight-color;
+      
+      // RESPONSIVO: Texto un poco más chico en celular
+      @media (max-width: 768px) {
+        font-size: 1.2rem;
+        margin-left: 5px !important; // Reduce el espacio con el logo
       }
     }
   }
+
+  // Enlaces (Idioma, Contacto, Redes)
+  .language, .contact, .social-icons a {
+    color: $black;
+    margin-left: 15px; // Margen normal
+    font-family: $font-general;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    // RESPONSIVO: Ajustes para celular
+    @media (max-width: 768px) {
+       margin-left: 0; // Quitamos márgenes extra
+       font-size: 0.9rem; // Texto ligeramente más compacto
+    }
+
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+}
 
   
 // Menú principal Responsivo
@@ -140,7 +161,7 @@ $font-title: 'Mulish', sans-serif;
       color: $white;
       font-weight: 700;
       border-radius: 5px; 
-      
+
       @media (min-width: 992px) {
       }
     }

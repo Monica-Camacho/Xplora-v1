@@ -11870,8 +11870,13 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 .header-top .logo img {
-  width: 80px;
-  height: auto;
+  height: 40px;
+  width: auto;
+}
+@media (max-width: 768px) {
+  .header-top .logo img {
+    height: 30px;
+  }
 }
 .header-top .logo .app-name {
   font-family: "Mulish", sans-serif;
@@ -11880,11 +11885,24 @@ textarea.form-control-lg {
   font-size: 1.5rem;
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  .header-top .logo .app-name {
+    font-size: 1.2rem;
+    margin-left: 5px !important;
+  }
+}
 .header-top .language, .header-top .contact, .header-top .social-icons a {
   color: #000000;
   margin-left: 15px;
   font-family: "Quicksand", sans-serif;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+@media (max-width: 768px) {
+  .header-top .language, .header-top .contact, .header-top .social-icons a {
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
 }
 .header-top .language:hover, .header-top .contact:hover, .header-top .social-icons a:hover {
   color: #F06D35;
