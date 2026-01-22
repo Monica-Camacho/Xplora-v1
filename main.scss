@@ -58,7 +58,6 @@ $font-title: 'Mulish', sans-serif;
 
   
 // Menú principal
-// Menú principal
 .main-menu {
   background-color: $primary-color;
   padding: 0; // CLAVE 1: Eliminamos el espacio "sobrante" del contenedor
@@ -74,7 +73,7 @@ $font-title: 'Mulish', sans-serif;
     font-family: $font-general;
     font-size: 0.9rem;
     text-decoration: none;
-    
+
     padding: 8px 15px; 
     
     // Para que "tope" bien, quitamos márgenes y radios exagerados
@@ -158,63 +157,125 @@ $font-title: 'Mulish', sans-serif;
   }
 
 
-// Buscador
-
+// Barra de Búsqueda (Estilo Cápsula Flotante)
 .search-bar-template {
+  background-color: $white;
+  padding: 15px 20px;
+  border-radius: 50px; // Bordes muy redondeados (tipo cápsula)
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); // Sombra suave para que "flote"
+  
+  // Para centrarla y limitarla
+  max-width: 900px; 
+  margin: 15px auto 15px auto;
+  z-index: 10;
+  
+  // Hacemos que sea flexible (fila en PC, columna en móvil)
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: $bar-color;
-  border-radius: 10px;
-  padding: 10px 15px;
-  box-shadow: 0 2px 4px $shadow;
-  
-  .search-field, .date-field {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-right: 20px;
-      gap: 5px;
-      flex-grow: 1;
+  gap: 15px; // Espacio entre elementos
+  flex-wrap: wrap; // Permite que se ajuste en pantallas pequeñas
+
+  // 1. Campo de Búsqueda (Lugar)
+  .search-field {
+    flex: 2; // Ocupa más espacio que las fechas
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5; // Gris muy clarito
+    border-radius: 30px;
+    padding: 5px 15px;
+    min-width: 200px;
+
+    .icon {
+      font-size: 1.2rem;
+      color: $primary-color;
+      margin-right: 10px;
+    }
+
+    input {
+      border: none;
+      background: transparent;
+      box-shadow: none; // Quita el brillo azul de Bootstrap
+      width: 100%;
+      font-weight: 500;
       
-      .icon {
-          margin-right: 8px;
+      &::placeholder {
+        color: #999;
+        font-size: 0.95rem;
       }
-
-      input {
-          border: none;
-          background: none;
-          outline: none;
-          padding: 5px;
-          font-size: 16px;
-          width: 100%;
-          font-family: $font-general;
-          color: $black;
-      }
-
-      label {
-          font-size: 12px;
-          color: $title-shadow;
-          position: absolute;
-          top: -10px;
-          left: 10px;
-          background-color: $bar-color;
-          padding: 0 5px;
-          font-family: $font-general;
-      }
+    }
   }
 
-  .btn-search {
-      background-color: $button-color;
+  // 2. Campos de Fecha
+  .date-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+    position: relative;
+    padding: 0 10px;
+    border-left: 1px solid #eee; // Separador sutil
+
+    label {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #777;
+      margin-bottom: 0;
+      margin-left: 4px;
+    }
+
+    input {
       border: none;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 5px;
+      font-size: 0.9rem;
+      font-weight: 600;
       color: $black;
-      padding: 10px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px $shadow;
       cursor: pointer;
-      font-family: $font-general;
+    }
+  }
+
+  // 3. Botón de Buscar
+  .btn-search {
+    background-color: $button-color; // Amarillo/Dorado
+    color: $black;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 10px 30px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    &:hover {
+      background-color: darken($button-color, 10%); // Un poco más oscuro al pasar el mouse
+      transform: translateY(-2px); // Efecto de elevación
+    }
   }
 }
+
+// RESPONSIVE: Ajustes para móvil
+@media (max-width: 768px) {
+  .search-bar-template {
+    border-radius: 20px; // Menos redondeado en móvil para aprovechar espacio
+    flex-direction: column; // Pone todo en columna
+    gap: 15px;
+    padding: 20px;
+    margin-top: 20px; // Quita el margen negativo en móvil
+
+    .search-field, .date-field, .btn-search {
+      width: 100%; // Que ocupen todo el ancho
+      border-left: none; // Quita la línea separadora
+    }
+    
+    .date-field {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 15px;
+    }
+  }
+}
+
+
 
 //Página de inicio
 

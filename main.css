@@ -11969,56 +11969,102 @@ footer .footer-bottom .social-icons a:hover {
 }
 
 .search-bar-template {
+  background-color: #FFFFFF;
+  padding: 15px 20px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 15px auto 15px auto;
+  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: #F4F4F4;
-  border-radius: 10px;
-  padding: 10px 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  gap: 15px;
+  flex-wrap: wrap;
 }
-.search-bar-template .search-field, .search-bar-template .date-field {
+.search-bar-template .search-field {
+  flex: 2;
   display: flex;
   align-items: center;
-  position: relative;
-  margin-right: 20px;
-  gap: 5px;
-  flex-grow: 1;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  padding: 5px 15px;
+  min-width: 200px;
 }
-.search-bar-template .search-field .icon, .search-bar-template .date-field .icon {
-  margin-right: 8px;
+.search-bar-template .search-field .icon {
+  font-size: 1.2rem;
+  color: #F0A835;
+  margin-right: 10px;
 }
-.search-bar-template .search-field input, .search-bar-template .date-field input {
+.search-bar-template .search-field input {
   border: none;
-  background: none;
-  outline: none;
-  padding: 5px;
-  font-size: 16px;
+  background: transparent;
+  box-shadow: none;
   width: 100%;
-  font-family: "Quicksand", sans-serif;
-  color: #000000;
+  font-weight: 500;
 }
-.search-bar-template .search-field label, .search-bar-template .date-field label {
-  font-size: 12px;
-  color: #555;
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background-color: #F4F4F4;
+.search-bar-template .search-field input::placeholder {
+  color: #999;
+  font-size: 0.95rem;
+}
+.search-bar-template .date-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  position: relative;
+  padding: 0 10px;
+  border-left: 1px solid #eee;
+}
+.search-bar-template .date-field label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #777;
+  margin-bottom: 0;
+  margin-left: 4px;
+}
+.search-bar-template .date-field input {
+  border: none;
+  background: transparent;
+  box-shadow: none;
   padding: 0 5px;
-  font-family: "Quicksand", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000000;
+  cursor: pointer;
 }
 .search-bar-template .btn-search {
   background-color: #F0C135;
-  border: none;
   color: #000000;
-  padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 10px 30px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.search-bar-template .btn-search:hover {
+  background-color: rgb(225.2718894009, 172.8571428571, 16.7281105991);
+  transform: translateY(-2px);
 }
 
+@media (max-width: 768px) {
+  .search-bar-template {
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .search-bar-template .search-field, .search-bar-template .date-field, .search-bar-template .btn-search {
+    width: 100%;
+    border-left: none;
+  }
+  .search-bar-template .date-field {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
 .destinos-container {
   position: relative;
   width: 100%;
