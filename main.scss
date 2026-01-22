@@ -57,15 +57,23 @@ $font-title: 'Mulish', sans-serif;
   }
 
   
-// Menú principal
+// Menú principal Responsivo
 .main-menu {
   background-color: $primary-color;
-  padding: 0; // CLAVE 1: Eliminamos el espacio "sobrante" del contenedor
 
-  // Ajuste para que los items llenen la altura en móviles y escritorio
+  // MÓVIL: Altura automática para que baje el menú
+  height: auto; 
+
+  // ESCRITORIO: Fijamos la altura (opcional, ayuda a que se vea compacto)
+  @media (min-width: 992px) {
+    height: 70px; 
+  }
+
   .container {
+    // Tu regla exacta
     padding-top: 0;
     padding-bottom: 0;
+    height: 100%; // Agregado para que tope en altura
   }
 
   .menu-item {
@@ -73,45 +81,68 @@ $font-title: 'Mulish', sans-serif;
     font-family: $font-general;
     font-size: 0.9rem;
     text-decoration: none;
-
-    padding: 8px 15px; 
-    
-    // Para que "tope" bien, quitamos márgenes y radios exagerados
-    border-radius: 5px; // Un borde redondeado sutil (o pon 0 si quieres cuadrado perfecto)
-    margin: 0 2px; // Un margen diminuto lateral para que no se peguen entre sí
-    
     transition: all 0.3s ease;
-    text-align: center; 
-    
-    // Flexbox para centrar icono y texto verticalmente
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
+    // --- ESTILOS MÓVIL (Lista vertical) ---
+    display: flex;
+    flex-direction: row; // Icono al lado del texto
+    align-items: center;
+    width: 100%; // Ocupa todo el ancho
+    padding: 15px 20px; // Más espacio para el dedo
+    border-bottom: 1px solid rgba(255,255,255,0.1); // Línea separadora sutil
+    margin: 0;
+    border-radius: 0;
+    
     i {
-      font-size: 1.3rem; // Icono ajustado al nuevo tamaño
-      display: block;
-      margin-bottom: 2px;
+        font-size: 1.3rem;
+        margin-right: 10px; // Espacio entre icono y texto en móvil
+        margin-bottom: 0;
     }
 
-    // Al pasar el mouse (Hover)
+    // --- ESTILOS ESCRITORIO ---
+    @media (min-width: 992px) {
+        // Aquí empieza tu código original
+        padding: 8px 15px; 
+        
+        border-radius: 5px; 
+        margin: 0 2px; 
+        
+        text-align: center; 
+        
+        display: inline-flex;
+        flex-direction: column; // Icono arriba del texto
+        align-items: center;
+        justify-content: center;
+        
+        width: auto; // Ancho automático según el texto
+        border-bottom: none; // Quitamos la línea del móvil
+        height: 100%; // Para intentar llenar la altura del padre
+
+        i {
+            font-size: 1.3rem; 
+            display: block;
+            margin-bottom: 2px;
+            margin-right: 0;
+        }
+    }
+
+    // Hover (Aplica a ambos)
     &:hover {
-      background-color: rgba(0, 0, 0, 0.1); // Oscurecimiento sutil
+      background-color: rgba(0, 0, 0, 0.1);
       color: $white; 
     }
 
     // ESTADO ACTIVO
     &.active {
-      background-color: #cd8a20; // Tu color naranja quemado
-      box-shadow: inset 0 3px 6px rgba(0,0,0,0.3); // Sombra interna
+      background-color: #cd8a20; 
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.3); 
       opacity: 1;
-      
       color: $white;
       font-weight: 700;
-      
-      // Asegura que ocupe todo el alto disponible visualmente
       border-radius: 5px; 
+      
+      @media (min-width: 992px) {
+      }
     }
   }
 }

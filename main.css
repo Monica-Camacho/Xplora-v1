@@ -11892,31 +11892,58 @@ textarea.form-control-lg {
 
 .main-menu {
   background-color: #F0A835;
-  padding: 0;
+  height: auto;
+}
+@media (min-width: 992px) {
+  .main-menu {
+    height: 70px;
+  }
 }
 .main-menu .container {
   padding-top: 0;
   padding-bottom: 0;
+  height: 100%;
 }
 .main-menu .menu-item {
   color: #FFFFFF;
   font-family: "Quicksand", sans-serif;
   font-size: 0.9rem;
   text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  margin: 0 2px;
   transition: all 0.3s ease;
-  text-align: center;
-  display: inline-flex;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  border-radius: 0;
 }
 .main-menu .menu-item i {
   font-size: 1.3rem;
-  display: block;
-  margin-bottom: 2px;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .main-menu .menu-item {
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 0 2px;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border-bottom: none;
+    height: 100%;
+  }
+  .main-menu .menu-item i {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 2px;
+    margin-right: 0;
+  }
 }
 .main-menu .menu-item:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -11930,7 +11957,6 @@ textarea.form-control-lg {
   font-weight: 700;
   border-radius: 5px;
 }
-
 footer .footer-main {
   background-color: #F0C684;
   padding: 20px;
