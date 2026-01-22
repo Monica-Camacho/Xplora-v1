@@ -168,45 +168,81 @@ $font-title: 'Mulish', sans-serif;
   }
 }
   
-// Footer
-  footer {
-    .footer-main {
-      background-color: $footer-bg;
-      padding: 20px;
-      .container {
-        padding: 20px;
-      }
-      h6 {
-        font-family: $font-title;
-        color: $black;
-        font-weight: bold;
-        font-size: 20px;
-      }
-      a {
-        color: $black;
-        font-family: $font-general;
-        text-decoration: none;
-        font-size: 14px;
-        &:hover {
-          text-decoration: underline;
-          color: $white;
-        }
+// Footer Responsivo
+footer {
+  .footer-main {
+    background-color: $footer-bg; // Asegúrate de que esta variable tenga color
+    padding: 40px 0; // Un poco más de aire arriba y abajo se ve más elegante
+
+    .container {
+      // En móvil a veces el padding por defecto es suficiente
+    }
+
+    h6 {
+      font-family: $font-title;
+      color: $black;
+      font-weight: bold;
+      font-size: 1.2rem; // Usamos rem para mejor escala
+      margin-bottom: 20px;
+    }
+
+    // Lista de enlaces
+    ul {
+      li {
+        margin-bottom: 10px; // Espacio entre items de la lista
       }
     }
-    .footer-bottom {
-      background-color: $primary-color;
+
+    a {
       color: $black;
-      font-size: 12px;
-      .social-icons a {
-        color: $black;
-        margin: 0 10px;
-        font-size: 1.1rem;
-        &:hover {
-          color: $white;
-        }
+      font-family: $font-general;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease; // Suaviza el cambio de color
+      display: inline-block; // Permite que el hover funcione mejor
+
+      &:hover {
+        text-decoration: none; // Quitamos subrayado, mejor solo color
+        color: $white; 
+        transform: translateX(5px); // Pequeño movimiento a la derecha al pasar el mouse (Elegante)
+      }
+      
+      // Ajuste para el icono del chevron
+      i {
+          font-size: 0.8rem;
+          transition: margin-right 0.3s;
       }
     }
   }
+
+  .footer-bottom {
+    background-color: $primary-color; // Naranja quemado
+    color: $black; 
+    font-size: 0.85rem;
+    padding: 15px 0;
+
+    .social-icons {
+        margin-bottom: 10px;
+        
+        a {
+            color: $black; // Iconos 
+            margin: 0 12px; // Más espacio entre iconos para dedos gordos
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+
+            &:hover {
+                color: $black; // Al pasar mouse se ponen negros (o usa $highlight-color)
+                transform: translateY(-3px); // Flotan un poquito hacia arriba
+            }
+        }
+    }
+    
+    p {
+        opacity: 0.9; // Un poco de transparencia al texto de copyright
+    }
+  }
+}
 
 
 // Barra de Búsqueda (Estilo Cápsula Flotante)
