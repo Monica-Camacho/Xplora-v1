@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <title>Xplora</title>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="header-top">
+      <div
+        class="container d-flex justify-content-between align-items-center py-2">
+        <div class="header-left">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="src/images/icons/logo.svg" alt="Logo" class="logo-img">
+            <span class="app-name ms-2"
+              style="text-decoration: none;">Xplora</span>
+          </a>
+        </div>
+        <div class="header-right d-flex align-items-center">
+          <a href="#" class="language d-flex align-items-center">
+            <div class="dropdown">
+              <a class="language d-flex align-items-center dropdown-toggle"
+                id="languageDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-translate"></i>
+                <span class="ms-1">Español</span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                <li><a class="dropdown-item" href="#">Español</a></li>
+                <li><a class="dropdown-item" href="#">English</a></li>
+                <li><a class="dropdown-item" href="#">Français</a></li>
+                <li><a class="dropdown-item" href="#">Deutsch</a></li>
+              </ul>
+            </div>
+          </a>
+          <a href="contacto.html" class="contact ms-4">Contacto</a>
+          <div class="social-icons ms-5">
+            <a href="https://www.facebook.com/" target="_blank"><i
+                class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i
+                class="bi bi-instagram"></i></a>
+            <a href="https://x.com/home?lang=es" target="_blank"><i
+                class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav class="main-menu">
+      <div class="container d-flex justify-content-around py-2">
+        <a href="destinos.html" class="menu-item text-center">
+          <i class="bi bi-geo-alt-fill"></i>
+          <span>Destinos</span>
+        </a>
+        <a href="hospedaje.html" class="menu-item text-center">
+          <i class="bi bi-house-door-fill"></i>
+          <span>Hospedaje</span>
+        </a>
+        <a href="transporte.html" class="menu-item text-center">
+          <i class="bi bi-bus-front-fill"></i>
+          <span>Transporte</span>
+        </a>
+        <a href="turismo.html" class="menu-item text-center">
+          <i class="bi bi-camera-fill"></i>
+          <span>Turismo</span>
+        </a>
+        <a href="experiencias.html" class="menu-item text-center">
+          <i class="bi bi-emoji-sunglasses-fill"></i>
+          <span>Experiencias</span>
+        </a>
+        <a href="login.html" class="menu-item text-center">
+          <i class="bi bi-person-fill"></i>
+          <span>Inicio de sesión</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <main class="container my-5">
+      <!-- Buscador -->
+      <div id="search-options">
+        <button id="viaje-redondo" class="active">Viaje redondo</button>
+        <button id="viaje-sencillo">Viaje sencillo</button>
+        <button id="multidestino">Multidestino</button>
+        <select id="clase">
+          <option value="economica">Económica</option>
+          <option value="business">Business</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
+
+      <!-- Buscador para viaje redondo -->
+      <div id="search-bar-container">
+        <div id="viaje-redondo-bar" class="search-bar-template">
+          <div class="search-field">
+            <i class="bi bi-geo-alt icon"></i>
+            <input type="text" placeholder="Origen" class="form-control">
+          </div>
+          <div class="search-field">
+            <i class="bi bi-geo-alt icon"></i>
+            <input type="text" placeholder="Destino" class="form-control">
+          </div>
+          <div class="date-field">
+            <label>Llegada</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="date-field">
+            <label>Salida</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="search-field">
+            <i class="bi bi-person icon"></i>
+            <input type="number" placeholder="1 pasajero" min="1" />
+          </div>
+          <button class="btn btn-search"
+            onclick="window.location.href='busqueda-transporte.html'">Buscar</button>
+        </div>
+
+        <!-- Buscador para viaje sencillo -->
+        <div id="viaje-sencillo-bar" class="search-bar-template hidden">
+          <div class="search-field">
+            <i class="bi bi-geo-alt icon"></i>
+            <input type="text" placeholder="Origen" class="form-control">
+          </div>
+          <div class="search-field">
+            <i class="bi bi-geo-alt icon"></i>
+            <input type="text" placeholder="Destino" class="form-control">
+          </div>
+          <div class="date-field">
+            <label>Fecha</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="search-field">
+            <i class="bi bi-person icon"></i>
+            <input type="number" placeholder="1 pasajero" min="1" />
+          </div>
+          <button class="btn btn-search"
+            onclick="window.location.href='busqueda-transporte.html'">Buscar</button>
+        </div>
+
+        <!-- Buscador para viaje multidestino -->
+        <div id="multidestino-bar" class="search-bar-template hidden">
+          <div class="search-field passenger-info">
+            <i class="bi bi-person icon"></i>
+            <input type="number" placeholder="1 pasajero" min="1" />
+          </div>
+
+          <!-- Información de vuelo para viaje multidestino -->
+          <div class="flight-cont">
+            <h4>Vuelo 1</h4>
+            <div class="flight-section">
+              <div class="search-field">
+                <i class="bi bi-geo-alt icon"></i>
+                <input type="text" placeholder="Origen" class="form-control">
+              </div>
+              <div class="search-field">
+                <i class="bi bi-geo-alt icon"></i>
+                <input type="text" placeholder="Destino" class="form-control">
+              </div>
+              <div class="date-field">
+                <label>Fecha</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="flight-cont">
+            <h4>Vuelo 2</h4>
+            <div class="flight-section">
+              <div class="search-field">
+                <i class="bi bi-geo-alt icon"></i>
+                <input type="text" placeholder="Origen" class="form-control">
+              </div>
+              <div class="search-field">
+                <i class="bi bi-geo-alt icon"></i>
+                <input type="text" placeholder="Destino" class="form-control">
+              </div>
+              <div class="date-field">
+                <label>Fecha</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <a href="#" id="add-flight-btn" class="add-flight">Agregar otro
+            vuelo</a>
+
+          <button class="btn btn-search"
+            onclick="window.location.href='busqueda-transporte.html'">Buscar</button>
+        </div>
+      </div>
+
+      <!-- Resultados de la búsqueda -->
+      <div class="flight-recommendations">
+        <!-- Filtro de vuelos -->
+        <div class="filter-section">
+          <h3>Filtrar por:</h3>
+          <div class="filter-group">
+            <h4>Escalas</h4>
+            <label><input type="checkbox"> Sin escala</label>
+            <label><input type="checkbox"> 1 escala</label>
+          </div>
+          <div class="filter-group">
+            <h4>Aerolíneas</h4>
+            <label><input type="checkbox"> Aeroméxico</label>
+            <label><input type="checkbox"> Viva Aerobus</label>
+          </div>
+          <div class="filter-group">
+            <h4>Hora de salida en Villahermosa</h4>
+            <label><input type="checkbox"> 5:00 - 11:59</label>
+            <label><input type="checkbox"> 12:00 - 17:59</label>
+            <label><input type="checkbox"> 17:59 - 23:59</label>
+          </div>
+          <div class="filter-group">
+            <h4>Hora de llegada a Guadalajara</h4>
+            <label><input type="checkbox"> 5:00 - 11:59</label>
+            <label><input type="checkbox"> 12:00 - 17:59</label>
+            <label><input type="checkbox"> 17:59 - 23:59</label>
+          </div>
+        </div>
+
+        <!-- Recomendaciones de vuelos -->
+        <div class="recommended-flights">
+          <h3>Vuelos de salida recomendados</h3>
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <!-- Información de cada vuelo disponible -->
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+          <div class="flight-card">
+            <div class="flight-info">
+              <p>6:04 - 12:12</p>
+              <p>Villahermosa (VSA) - Guadalajara (GDL)</p>
+              <p class="price">$1,800.00</p>
+            </div>
+            <div class="flight-details">
+              <p>Aeroméxico</p>
+              <p>6 h 8 min (1 escala)</p>
+              <p>2 h 50 min en Ciudad De México</p>
+            </div>
+            <button class="reserve-button"
+              onclick="window.location.href='detalle-transporte.html'">Reservar</button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-main py-4">
+        <div class="container d-flex justify-content-between">
+          <div>
+            <h6>Información Legal</h6>
+            <a href="terminos.html">Términos y condiciones</a><br>
+            <a href="privacidad.html">Política de privacidad</a><br>
+            <a href="avisos-legal.html">Aviso legal</a>
+          </div>
+          <div>
+            <h6>Enlaces rápidos</h6>
+            <a href="destinos.html">Destinos</a><br>
+            <a href="hospedaje.html">Hospedaje</a><br>
+            <a href="transporte.html">Transporte</a><br>
+            <a href="turismo.html">Turismo</a><br>
+            <a href="experiencias.html">Experiencias</a>
+          </div>
+          <div>
+            <h6>Contáctanos</h6>
+            <p>Correo: soporte@xplora.com</p>
+            <p>Teléfono: +1 800 123 4567</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center py-2">
+        <div class="social-icons">
+          <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/"><i
+              class="bi bi-instagram"></i></a>
+          <a href="https://x.com/home?lang=es"><i class="bi bi-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Xplora. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="path/to/bootstrap-icons/font/bootstrap-icons.css"></script>
+    <script
+      src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
