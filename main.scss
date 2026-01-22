@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&family=Quicksand:wght@400;700&display=swap');
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; // Esto corta cualquier cosa que se salga del ancho de la pantalla
+}
+
 // Colores
 $primary-color: #F0A835;
 $highlight-color: #F06D35;
