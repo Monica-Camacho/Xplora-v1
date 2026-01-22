@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  },
+  "scripts": {
+    "compile": "sass main.scss main.css",
+    "watch": "sass --watch main.scss:main.css"
   }
 }

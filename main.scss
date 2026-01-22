@@ -58,40 +58,61 @@ $font-title: 'Mulish', sans-serif;
 
   
 // Menú principal
+// Menú principal
 .main-menu {
-  background-color: $primary-color; // Mantiene el fondo naranja
+  background-color: $primary-color;
+  padding: 0; // CLAVE 1: Eliminamos el espacio "sobrante" del contenedor
+
+  // Ajuste para que los items llenen la altura en móviles y escritorio
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
   .menu-item {
-    color: $white; // Texto blanco
+    color: $white;
     font-family: $font-general;
     font-size: 0.9rem;
     text-decoration: none;
-    padding: 10px 5px;
     
-    // IMPORTANTE: Borde transparente para reservar el espacio
-    border-bottom: 3px solid transparent; 
+    padding: 8px 15px; 
+    
+    // Para que "tope" bien, quitamos márgenes y radios exagerados
+    border-radius: 5px; // Un borde redondeado sutil (o pon 0 si quieres cuadrado perfecto)
+    margin: 0 2px; // Un margen diminuto lateral para que no se peguen entre sí
+    
     transition: all 0.3s ease;
-    
-    // Para centrar el texto si usas flex en el padre
     text-align: center; 
+    
+    // Flexbox para centrar icono y texto verticalmente
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     i {
-      font-size: 1.5rem;
+      font-size: 1.3rem; // Icono ajustado al nuevo tamaño
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     // Al pasar el mouse (Hover)
     &:hover {
-      color: $black; // Se pone negro al pasar el mouse
+      background-color: rgba(0, 0, 0, 0.1); // Oscurecimiento sutil
+      color: $white; 
     }
 
-    // ESTADO ACTIVO (La clave que faltaba)
+    // ESTADO ACTIVO
     &.active {
-      color: $white;           // El texto se queda blanco
-      font-weight: 700;        // Se pone en negrita
-      border-bottom-color: $white; // Aparece la línea blanca abajo
+      background-color: #cd8a20; // Tu color naranja quemado
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.3); // Sombra interna
       opacity: 1;
+      
+      color: $white;
+      font-weight: 700;
+      
+      // Asegura que ocupe todo el alto disponible visualmente
+      border-radius: 5px; 
     }
   }
 }
@@ -102,7 +123,7 @@ $font-title: 'Mulish', sans-serif;
       background-color: $footer-bg;
       padding: 20px;
       .container {
-        padding: 40px;
+        padding: 20px;
       }
       h6 {
         font-family: $font-title;
