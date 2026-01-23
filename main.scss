@@ -692,47 +692,95 @@ footer {
   }
 }
 
-//Sección de banner
+
+// Sección de Banner Promocional
 .promo-banner {
   display: flex;
   align-items: center;
-  justify-content: space-between;;
-  background-color: $container-bg;
+  justify-content: space-between; // Distribuye: Img - Texto - Botón - Img
+  background-color: $container-bg; // Asegúrate de tener esta variable, o usa un gris claro #f9f9f9
   color: $black;
   font-weight: bold;
   font-family: $font-general;
-  margin-top: 50px;
-  margin-bottom: 80px;
+
+  // MÁRGENES ESTANDARIZADOS
+  margin-top: 20px;
+  margin-bottom: 20px;
+
   border-radius: 10px;
   box-shadow: 0 2px 4px $shadow;
-  padding: 20px;
+  padding: 30px 40px; // Un poco más de aire interno
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
-  
-  .btn {
-      background-color: $white;
-      color: $black;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px $shadow;
-      font-family: $font-general;
-      &:hover {
-          background-color: $button-color;
-          color: $white;
-      }
+
+  // === RESPONSIVO (Móvil) ===
+  @media (max-width: 768px) {
+    flex-direction: column; // Apilar elementos verticalmente
+    text-align: center; // Centrar texto
+    padding: 30px 20px;
   }
-  
-}
 
-.promo-banner img {
-  width: 197px;
-}
+  // 1. IMÁGENES (Iconos laterales)
+  img {
+    width: 150px; // Tamaño para escritorio
+    height: auto;
+    object-fit: contain;
 
-.promo-banner p {
-  margin: 0;
-  text-align: left;
-  font-size: 20px;
-  font-family: $font-general;
+    // En móvil
+    @media (max-width: 768px) {
+      // CAMBIO AQUÍ: Aumentamos el tamaño para que se vea bien
+      width: 130px; // Antes era 80px, ahora es más grande y protagonista
+      margin-bottom: 15px; // Un poco más de espacio debajo
+
+      // OPCIONAL: Mantenemos oculta la segunda imagen para que no estorbe
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  // 2. TEXTO CENTRAL
+  p {
+    margin: 0;
+    text-align: left;
+    font-size: 1.2rem; // Mejor usar rem que px fijos
+    font-family: $font-general;
+    flex: 1; // Para que el texto ocupe el espacio disponible central
+    padding: 0 20px;
+    line-height: 1.5;
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 1rem;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  // 3. BOTÓN
+  .btn {
+    background-color: $white;
+    color: $black;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px $shadow;
+    font-family: $font-general;
+    padding: 12px 30px; // Padding interno para darle cuerpo al botón
+    text-decoration: none; // Quitar subrayado de enlace
+    white-space: nowrap; // Evita que el texto del botón se parta
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $button-color;
+      color: $white;
+      transform: translateY(-2px); // Efecto de elevación sutil
+    }
+
+    @media (max-width: 768px) {
+      width: 100%; // Botón ancho completo en móvil para fácil clic
+      display: block;
+    }
+  }
 }
 
 //Sección de ofertas especiales
