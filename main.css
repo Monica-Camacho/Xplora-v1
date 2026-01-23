@@ -11980,6 +11980,7 @@ textarea.form-control-lg {
   font-weight: 700;
   border-radius: 5px;
 }
+
 footer .footer-main {
   background-color: #F0C684;
   padding: 40px 0;
@@ -12113,7 +12114,6 @@ footer .footer-bottom p {
   background-color: rgb(225.2718894009, 172.8571428571, 16.7281105991);
   transform: translateY(-2px);
 }
-
 @media (max-width: 768px) {
   .search-bar-template {
     border-radius: 20px;
@@ -12122,7 +12122,9 @@ footer .footer-bottom p {
     padding: 20px;
     margin-top: 20px;
   }
-  .search-bar-template .search-field, .search-bar-template .date-field, .search-bar-template .btn-search {
+  .search-bar-template .search-field,
+  .search-bar-template .date-field,
+  .search-bar-template .btn-search {
     width: 100%;
     border-left: none;
   }
@@ -12132,6 +12134,7 @@ footer .footer-bottom p {
     border-radius: 15px;
   }
 }
+
 .destinos-container {
   position: relative;
   width: 100%;
