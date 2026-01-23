@@ -369,59 +369,129 @@ footer {
 }
 
 
-
 //Página de inicio
 
-//Sección de ejores destinos
+
+// Sección de Mejores Destinos (Corregida y Responsiva)
+
+// Asegúrate de que esta variable esté definida al inicio de tu archivo o en _variables.scss
+// $font-title: 'Mulish', sans-serif;
+
 .destinos-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 20px; 
 
   h2 {
       color: $highlight-color;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
+      
+      // 1. FUENTE Y GROSOR
+      font-family: $font-title; // Mulish
+      font-weight: 600; // Bajamos de 'bold' (700) a 600 para que no se vea tan grueso
+      
+      // 2. ALINEACIÓN ESCRITORIO
+      // Le damos el mismo margen que tiene el 'cards-wrapper' para que se alineen
+      margin-left: 50px; 
+      
+      // AJUSTES PARA MÓVIL
+      @media (max-width: 768px) {
+          margin-left: 0; // En celular quitamos el margen extra
+          padding-left: 20px; // Mantenemos un pequeño respiro
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+      }
   }
 
   .cards-wrapper {
       display: flex;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      margin: 0 50px;
+      gap: 20px; // Espacio uniforme entre tarjetas
+      
+      // Escritorio
+      margin: 0 50px; 
+      overflow-x: hidden; 
+
+      // Móvil
+      @media (max-width: 768px) {
+          margin: 0; 
+          gap: 15px; 
+          padding: 0 20px;
+          overflow-x: auto; 
+          &::-webkit-scrollbar { display: none; }
+      }
   }
 
   .card {
-    min-width: 197px;
-    height: 210px;
-    margin-right: 10px;
-    border-radius: 20px;
+    // === CÁLCULO PARA 4 TARJETAS ===
+    // 25% del ancho menos el ajuste del espacio (gap de 20px)
+    flex: 0 0 calc(25% - 15px); 
+    
+    // === CUADRADO PERFECTO ===
+    // Esto hace que la altura sea IGUAL al ancho automáticamente
+    aspect-ratio: 1 / 1; 
+    
+    border-radius: 20px; // Bordes redondeados más suaves
     overflow: hidden;
-    box-shadow: 0 2px 4px $shadow;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
     position: relative;
     background-color: $white;
+    border: none;
+
+    // Móvil: Mantenemos el cuadrado pero con ancho fijo para el scroll
+    @media (max-width: 768px) {
+        flex: 0 0 200px; // Ancho fijo
+        // Al tener aspect-ratio 1/1, la altura será también 200px automáticamente
+    }
 
     img {
         width: 100%;
         height: 100%;
         display: block;
-        object-fit: cover;
+        object-fit: cover; // CRUCIAL: Para que la imagen rellene el cuadrado sin deformarse
+        transition: transform 0.4s ease;
     }
 
-    .card-title {
+    &:hover img {
+        transform: scale(1.1);
+    }
+
+      .card-title {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: $white;
-        padding: 5px 10px;
-        border-radius: 10px;
-        font-size: 14px;
-        text-align: center;
-        font-family: $font-general;
-    }
-}
+        
+        // Ubicación: Esquina inferior derecha
+        top: auto;
+        left: auto;
+        bottom: 15px;
+        right: 15px;
+        width: auto;
 
+        // ESTILO TIPO AIRBNB / PASTILLA
+        // Blanco con 90% de opacidad (se ve premium, no plastoso)
+        background-color: rgba(255, 255, 255, 0.9); 
+        // Opcional: Si quieres efecto vidrio borroso (muy moderno):
+        backdrop-filter: blur(4px); 
+
+        color: $black;
+        padding: 8px 16px; // Más espacio a los lados para la forma ovalada
+        border-radius: 50px; // ESTO hace la forma de pastilla redondeada
+        
+        // Tipografía
+        font-family: $font-title;
+        font-weight: 700; // Un poco más negrita para que se lea bien en tamaño chico
+        font-size: 0.85rem; // Letra un poco más pequeña y elegante
+        text-align: center;
+        
+        // Sombra suave para que "flote" sobre la imagen
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        
+        // Un borde invisible casi, para definición
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+  }
+
+  // Flechas
   .scroll-arrow {
       position: absolute;
       top: 50%;
@@ -429,24 +499,31 @@ footer {
       background: $alert-color;
       border: none;
       color: $white;
-      padding: 10px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 2px 4px $shadow;
-      z-index: 1;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
 
-      &.left {
-          left: 0;
+      &:hover { 
+          transform: translateY(-50%) scale(1.1); 
+          background-color: darken($alert-color, 10%);
       }
 
-      &.right {
-          right: 0;
+      &.left { left: 10px; }
+      &.right { right: 10px; }
+      
+      @media (max-width: 768px) {
+          display: none; 
       }
   }
 }
+
 
 //Sección de úsquedas populares
 .popular-searches {
