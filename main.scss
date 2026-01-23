@@ -373,10 +373,6 @@ footer {
 
 
 // Sección de Mejores Destinos (Corregida y Responsiva)
-
-// Asegúrate de que esta variable esté definida al inicio de tu archivo o en _variables.scss
-// $font-title: 'Mulish', sans-serif;
-
 .destinos-container {
   position: relative;
   width: 100%;
@@ -525,100 +521,171 @@ footer {
 }
 
 
-//Sección de úsquedas populares
+//Sección de búsquedas populares
 .popular-searches {
-  padding: 80px;
   position: relative;
-  overflow: hidden;
-  margin-top: 80px;
-  
-  .scroll-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: $alert-color;
-    border: none;
-    color: $white;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 4px $shadow;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &.left {
-        left: 0;
-    }
-
-    &.right {
-        right: 0;
-    }
-}
-}
-
-.popular-searches h2 {
-  color: $highlight-color;
-  margin-bottom: 50px;
-  font-family: $font-title;
-  font-weight: bold;
-}
-
-.popular-card-container {
-  display: flex;
-  gap: 15px;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  margin-bottom: 80px;
-  -ms-overflow-style: none;
-}
-
-.popular-card {
-  background-color: $card-color;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px $shadow;
-  max-width: 197px;
-  height: 210px;
-  flex-shrink: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.popular-card img {
   width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
+  overflow: hidden;
+  padding: 20px;
+  margin-top: 20px;
 
-.popular-card-content {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  // Título de la sección
+  h2 {
+      color: $highlight-color;
+      margin-bottom: 30px;
+      font-family: $font-title;
+      font-weight: 600;
+      margin-left: 50px; // Alineado con el inicio de las tarjetas
+      
+      @media (max-width: 768px) {
+          margin-left: 0;
+          padding-left: 20px;
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+      }
+  }
 
-.popular-card-content h3 {
-  font-size: 14px;
-  margin: 0;
-  font-family: $font-title;
-  font-weight: bold;
-}
+  // Contenedor de las tarjetas (Scroll horizontal)
+  .popular-card-container {
+      display: flex;
+      gap: 20px; // Espacio entre tarjetas
+      margin: 0 50px; // Margen lateral igual al título
+      overflow-x: hidden; // Ocultar scroll en escritorio
+      scroll-behavior: smooth;
 
-.popular-card-content p {
-  font-size: 12px;
-  color: $title-shadow;
-  margin: 0;
-  font-family: $font-general;
-}
+      // Ajustes para Móvil
+      @media (max-width: 768px) {
+          margin: 0; 
+          gap: 15px; 
+          padding: 0 20px;
+          overflow-x: auto; // Permitir deslizar con el dedo
+          &::-webkit-scrollbar { display: none; }
+      }
+  }
 
-.star {
-  color: $alert-color;
-  font-size: 1.2rem;
+  // Estilos de la Tarjeta Individual
+  .popular-card {
+    // 1. Tamaño y Forma
+    flex: 0 0 calc(25% - 15px); // 4 columnas exactas
+    aspect-ratio: 1 / 1; // Cuadrado perfecto (Igual a Mejores Destinos)
+    height: auto; 
+    
+    // 2. Estética General
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    position: relative;
+    background-color: #F8F7F5; // Color de fondo gris muy suave
+    border: none;
+    
+    // 3. Distribución Flex (Columna)
+    display: flex;
+    flex-direction: column;
+
+    // Ajuste Móvil
+    @media (max-width: 768px) {
+        flex: 0 0 200px; // Ancho fijo en celular
+    }
+
+    // --- PARTE SUPERIOR: IMAGEN (72%) ---
+    img {
+        width: 100%;
+        height: 72%; 
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    // Efecto Zoom en la imagen al pasar el mouse
+    &:hover img {
+        transform: scale(1.05);
+    }
+
+    // --- PARTE INFERIOR: INFORMACIÓN (28%) ---
+    .popular-card-content {
+        height: 28%; 
+        padding: 0 15px; // Sin padding vertical, Flex se encarga de centrar
+        
+        display: flex;
+        justify-content: space-between; // Texto a la izq, Estrella a la der
+        align-items: center; // Centrado vertical perfecto
+        
+        background-color: #F8F7F5;
+        z-index: 2;
+        position: relative;
+
+        // Grupo de Textos (Nombre + Visitas)
+        .text-group { 
+            display: flex;
+            flex-direction: column;
+            gap: 2px; // Espacio mínimo entre líneas
+            
+            h3 {
+                font-size: 0.95rem;
+                margin: 0;
+                color: $black;
+                font-family: $font-title;
+                font-weight: 700;
+                line-height: 1.1;
+            }
+
+            p {
+                font-size: 0.75rem;
+                margin: 0;
+                color: #666; // Gris texto secundario
+                font-family: $font-general;
+            }
+        }
+
+        // Icono de Estrella
+        i {
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            transition: transform 0.2s;
+
+            &:hover { transform: scale(1.2); }
+
+            // Estado: Llena (Amarilla)
+            &.bi-star-fill { color: #FFC107; } 
+            
+            // Estado: Vacía (Gris contorno)
+            &.bi-star { color: #B0B0B0; }      
+        }
+    }
+  }
+
+  // Botones de Flecha (Carrusel)
+  .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-20%); // Ajuste visual para centrar con respecto a las tarjetas
+      background: $alert-color;
+      border: none;
+      color: $white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover { 
+          transform: translateY(-20%) scale(1.1); 
+          background-color: darken($alert-color, 10%);
+      }
+
+      &.left { left: 10px; }
+      &.right { right: 10px; }
+      
+      // Ocultar en celular (se usa el dedo)
+      @media (max-width: 768px) {
+          display: none; 
+      }
+  }
 }
 
 //Sección de banner
