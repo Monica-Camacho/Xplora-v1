@@ -251,7 +251,10 @@ footer {
 // Barra de Búsqueda (Estilo Cápsula Flotante)
 .search-bar-template {
   background-color: $white;
-  padding: 15px 20px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
   border-radius: 50px; // Bordes muy redondeados (tipo cápsula)
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); // Sombra suave para que "flote"
 
@@ -377,6 +380,8 @@ footer {
   overflow: hidden;
   padding: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 
   h2 {
     color: $highlight-color;
@@ -532,6 +537,8 @@ footer {
   overflow: hidden;
   padding: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 
   // Título de la sección
   h2 {
@@ -783,57 +790,122 @@ footer {
   }
 }
 
-//Sección de ofertas especiales
+
+// Sección de Ofertas Especiales (Modular y con buen espaciado)
 .special-offers {
-  margin-top: 80px;
+  // 1. ESTRUCTURA GENERAL
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 0 20px;
+
+  // ESPACIADO MODULAR (AUTOSUFICIENTE)
+  // Usamos 50px arriba y abajo. Al colapsar con otras secciones de 50px,
+  // siempre habrá 50px de separación visual.
+  margin-top: 50px;
+  margin-bottom: 50px; 
+  
+  box-sizing: border-box;
+
+  // RESPONSIVO: Móvil
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 30px;
+    // En celular podemos reducir un poco si quieres, o dejarlo igual
+    margin-top: 40px; 
+    margin-bottom: 40px;
+  }
+
+  // 2. CONTENIDO DE TEXTO (Izquierda)
+  .text-content {
+    flex: 1;
+    max-width: 500px;
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      color: $highlight-color;
+      font-family: $font-title;
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      line-height: 1.1;
+    }
+
+    p {
+      color: #555;
+      font-family: $font-general;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: $button-color;
+      color: $black;
+      font-family: $font-general;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        background-color: darken($button-color, 5%);
+      }
+
+      @media (max-width: 992px) {
+        width: 100%;
+      }
+    }
+  }
+
+  // 3. GALERÍA MOSAICO (Configurada para 3 IMÁGENES)
+  .image-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr; // 2 columnas
+    grid-auto-rows: 200px; // Altura base de las filas
+    gap: 15px;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      grid-auto-rows: 150px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        z-index: 2;
+      }
+
+      // === LÓGICA MÁGICA PARA 3 IMÁGENES ===
+      // Imagen 1: Grande a la izquierda (ocupa toda la altura)
+      &:first-child {
+        grid-row: span 2; 
+        height: 100%;
+      }
+      
+      // Imagen 2 y 3: Se apilan automáticamente a la derecha
+    }
+  }
 }
 
-.text-content {
-  max-width: 50%;
-}
-
-.text-content h2 {
-  color: $highlight-color;
-  font-family: $font-title;
-  font-weight: bold;
-}
-
-.text-content p {
-  color: $black;
-  font-family: $font-general;
-}
-
-.text-content button {
-  background-color: $button-color;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  color: $black;
-  cursor: pointer;
-  margin-top: 10px;
-  font-family: $font-general;
-  margin-bottom: 80px;
-}
-
-.image-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  grid-gap: 20px;
-  max-width: 45%;
-}
-
-.image-gallery img {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 2px 4px $shadow;
-}
 
 //Sección de características
 .features {
