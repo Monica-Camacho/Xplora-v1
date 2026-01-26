@@ -251,33 +251,52 @@ footer {
 // Barra de Búsqueda (Estilo Cápsula Flotante)
 .search-bar-template {
   background-color: $white;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  
+  // Padding interno: NECESARIO aquí para dar cuerpo a la cápsula blanca
+  padding: 15px 20px; 
+  
   box-sizing: border-box;
-  border-radius: 50px; // Bordes muy redondeados (tipo cápsula)
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); // Sombra suave para que "flote"
+  border-radius: 50px; // Bordes muy redondeados
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
   // Para centrarla y limitarla
   max-width: 900px;
-  margin: 15px auto 15px auto;
   z-index: 10;
 
-  // Hacemos que sea flexible (fila en PC, columna en móvil)
+  // === MÁRGENES ESTANDARIZADOS (50px) ===
+  // Usamos 'auto' a los lados para que se centre horizontalmente
+  margin: 50px auto;
+
+  // Flexbox para el contenido
   display: flex;
   align-items: center;
-  gap: 15px; // Espacio entre elementos
-  flex-wrap: wrap; // Permite que se ajuste en pantallas pequeñas
+  gap: 15px;
+  flex-wrap: wrap;
+
+  // === RESPONSIVE (Móvil) ===
+  @media (max-width: 768px) {
+    // Margen móvil (40px)
+    margin: 40px auto; 
+    
+    border-radius: 20px; // Menos redondeado en móvil
+    flex-direction: column; // Columna vertical
+    gap: 15px;
+    padding: 20px;
+  }
 
   // 1. Campo de Búsqueda (Lugar)
   .search-field {
-    flex: 2; // Ocupa más espacio que las fechas
+    flex: 2;
     display: flex;
     align-items: center;
-    background-color: #f5f5f5; // Gris muy clarito
+    background-color: #f5f5f5;
     border-radius: 30px;
     padding: 5px 15px;
     min-width: 200px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
 
     .icon {
       font-size: 1.2rem;
@@ -288,7 +307,7 @@ footer {
     input {
       border: none;
       background: transparent;
-      box-shadow: none; // Quita el brillo azul de Bootstrap
+      box-shadow: none;
       width: 100%;
       font-weight: 500;
 
@@ -307,7 +326,15 @@ footer {
     min-width: 140px;
     position: relative;
     padding: 0 10px;
-    border-left: 1px solid #eee; // Separador sutil
+    border-left: 1px solid #eee;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      border-left: none;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 15px;
+    }
 
     label {
       font-size: 0.75rem;
@@ -331,7 +358,7 @@ footer {
 
   // 3. Botón de Buscar
   .btn-search {
-    background-color: $button-color; // Amarillo/Dorado
+    background-color: $button-color;
     color: $black;
     font-weight: bold;
     border-radius: 30px;
@@ -340,32 +367,13 @@ footer {
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
     &:hover {
-      background-color: darken($button-color, 10%); // Un poco más oscuro al pasar el mouse
-      transform: translateY(-2px); // Efecto de elevación
-    }
-  }
-
-  // === RESPONSIVE: Ajustes para móvil (ANIDADO) ===
-  @media (max-width: 768px) {
-    border-radius: 20px; // Menos redondeado en móvil
-    flex-direction: column; // Pone todo en columna
-    gap: 15px;
-    padding: 20px;
-    margin-top: 20px;
-
-    // Elementos hijos dentro del media query
-    .search-field,
-    .date-field,
-    .btn-search {
-      width: 100%; // Que ocupen todo el ancho
-      border-left: none; // Quita la línea separadora
-    }
-
-    .date-field {
-      background-color: #f5f5f5;
-      padding: 10px;
-      border-radius: 15px;
+      background-color: darken($button-color, 10%);
+      transform: translateY(-2px);
     }
   }
 }
@@ -373,41 +381,52 @@ footer {
 
 //Página de inicio
 
-// Sección de Mejores Destinos (Corregida y Responsiva)
+// Sección de Mejores Destinos
 .destinos-container {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  
+  // === CORRECCIÓN DE PADDING ===
+  // 0 arriba/abajo (quita lo verde), 20px a los lados
+  padding: 0 20px; 
+  
   box-sizing: border-box;
 
+  // === MÁRGENES ESTANDARIZADOS (50px) ===
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  // Ajuste Móvil
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  // 1. Título
   h2 {
     color: $highlight-color;
     margin-bottom: 30px;
-
-    // 1. FUENTE Y GROSOR
     font-family: $font-title; // Mulish
-    font-weight: 600; // Bajamos de 'bold' (700) a 600 para que no se vea tan grueso
-
-    // 2. ALINEACIÓN ESCRITORIO
-    // Le damos el mismo margen que tiene el 'cards-wrapper' para que se alineen
+    font-weight: 600;
+    
+    // Alineación escritorio
     margin-left: 50px;
 
-    // AJUSTES PARA MÓVIL
+    // Ajustes móvil
     @media (max-width: 768px) {
-      margin-left: 0; // En celular quitamos el margen extra
-      padding-left: 20px; // Mantenemos un pequeño respiro
+      margin-left: 0;
+      padding-left: 20px;
       font-size: 1.5rem;
       margin-bottom: 20px;
     }
   }
 
+  // 2. Contenedor de tarjetas
   .cards-wrapper {
     display: flex;
-    gap: 20px; // Espacio uniforme entre tarjetas
-
+    gap: 20px;
+    
     // Escritorio
     margin: 0 50px;
     overflow-x: hidden;
@@ -424,33 +443,32 @@ footer {
     }
   }
 
+  // 3. Tarjeta Individual
   .card {
-    // === CÁLCULO PARA 4 TARJETAS ===
-    // 25% del ancho menos el ajuste del espacio (gap de 20px)
+    // Cálculo para 4 tarjetas
     flex: 0 0 calc(25% - 15px);
-
-    // === CUADRADO PERFECTO ===
-    // Esto hace que la altura sea IGUAL al ancho automáticamente
+    
+    // Cuadrado perfecto
     aspect-ratio: 1 / 1;
-
-    border-radius: 20px; // Bordes redondeados más suaves
+    
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     background-color: $white;
     border: none;
 
-    // Móvil: Mantenemos el cuadrado pero con ancho fijo para el scroll
+    // Móvil: Ancho fijo
     @media (max-width: 768px) {
-      flex: 0 0 200px; // Ancho fijo
-      // Al tener aspect-ratio 1/1, la altura será también 200px automáticamente
+      flex: 0 0 200px;
     }
 
+    // Imagen
     img {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover; // CRUCIAL: Para que la imagen rellene el cuadrado sin deformarse
+      object-fit: cover;
       transition: transform 0.4s ease;
     }
 
@@ -458,41 +476,33 @@ footer {
       transform: scale(1.1);
     }
 
+    // Título flotante (Pastilla)
     .card-title {
       position: absolute;
-
-      // Ubicación: Esquina inferior derecha
       top: auto;
       left: auto;
       bottom: 15px;
       right: 15px;
       width: auto;
 
-      // ESTILO TIPO AIRBNB / PASTILLA
-      // Blanco con 90% de opacidad (se ve premium, no plastoso)
       background-color: rgba(255, 255, 255, 0.9);
-      // Opcional: Si quieres efecto vidrio borroso (muy moderno):
       backdrop-filter: blur(4px);
-
+      
       color: $black;
-      padding: 8px 16px; // Más espacio a los lados para la forma ovalada
-      border-radius: 50px; // ESTO hace la forma de pastilla redondeada
-
-      // Tipografía
+      padding: 8px 16px;
+      border-radius: 50px;
+      
       font-family: $font-title;
-      font-weight: 700; // Un poco más negrita para que se lea bien en tamaño chico
-      font-size: 0.85rem; // Letra un poco más pequeña y elegante
+      font-weight: 700;
+      font-size: 0.85rem;
       text-align: center;
-
-      // Sombra suave para que "flote" sobre la imagen
+      
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-
-      // Un borde invisible casi, para definición
       border: 1px solid rgba(255, 255, 255, 0.5);
     }
   }
 
-  // Flechas
+  // 4. Flechas de navegación
   .scroll-arrow {
     position: absolute;
     top: 50%;
@@ -529,173 +539,177 @@ footer {
   }
 }
 
-
-//Sección de búsquedas populares
+// Sección de Búsquedas Populares
 .popular-searches {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 0 20px;
   box-sizing: border-box;
 
-  // Título de la sección
+  // === ESPACIADO MODULAR (50px) ===
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  // Ajuste Móvil
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  // 1. Título
   h2 {
-      color: $highlight-color;
-      margin-bottom: 30px;
-      font-family: $font-title;
-      font-weight: 600;
-      margin-left: 50px; // Alineado con el inicio de las tarjetas
-      
-      @media (max-width: 768px) {
-          margin-left: 0;
-          padding-left: 20px;
-          font-size: 1.5rem;
-          margin-bottom: 20px;
-      }
+    color: $highlight-color;
+    margin-bottom: 30px;
+    font-family: $font-title;
+    font-weight: 600;
+    margin-left: 50px;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      padding-left: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
   }
 
-  // Contenedor de las tarjetas (Scroll horizontal)
+  // 2. Contenedor de tarjetas
   .popular-card-container {
-      display: flex;
-      gap: 20px; // Espacio entre tarjetas
-      margin: 0 50px; // Margen lateral igual al título
-      overflow-x: hidden; // Ocultar scroll en escritorio
-      scroll-behavior: smooth;
+    display: flex;
+    gap: 20px;
+    margin: 0 50px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 
-      // Ajustes para Móvil
-      @media (max-width: 768px) {
-          margin: 0; 
-          gap: 15px; 
-          padding: 0 20px;
-          overflow-x: auto; // Permitir deslizar con el dedo
-          &::-webkit-scrollbar { display: none; }
+    @media (max-width: 768px) {
+      margin: 0;
+      gap: 15px;
+      padding: 0 20px;
+      overflow-x: auto;
+      &::-webkit-scrollbar {
+        display: none;
       }
+    }
   }
 
-  // Estilos de la Tarjeta Individual
+  // 3. Tarjeta Individual
   .popular-card {
-    // 1. Tamaño y Forma
-    flex: 0 0 calc(25% - 15px); // 4 columnas exactas
-    aspect-ratio: 1 / 1; // Cuadrado perfecto (Igual a Mejores Destinos)
-    height: auto; 
-    
-    // 2. Estética General
+    flex: 0 0 calc(25% - 15px);
+    aspect-ratio: 1 / 1;
+    height: auto;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    background-color: #F8F7F5; // Color de fondo gris muy suave
+    background-color: #f8f7f5;
     border: none;
-    
-    // 3. Distribución Flex (Columna)
     display: flex;
     flex-direction: column;
 
-    // Ajuste Móvil
     @media (max-width: 768px) {
-        flex: 0 0 200px; // Ancho fijo en celular
+      flex: 0 0 200px;
     }
 
-    // --- PARTE SUPERIOR: IMAGEN (72%) ---
+    // Imagen
     img {
-        width: 100%;
-        height: 72%; 
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
+      width: 100%;
+      height: 72%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
     }
 
-    // Efecto Zoom en la imagen al pasar el mouse
     &:hover img {
-        transform: scale(1.05);
+      transform: scale(1.05);
     }
 
-    // --- PARTE INFERIOR: INFORMACIÓN (28%) ---
+    // Contenido inferior
     .popular-card-content {
-        height: 28%; 
-        padding: 0 15px; // Sin padding vertical, Flex se encarga de centrar
-        
+      height: 28%;
+      padding: 0 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f7f5;
+      z-index: 2;
+      position: relative;
+
+      .text-group {
         display: flex;
-        justify-content: space-between; // Texto a la izq, Estrella a la der
-        align-items: center; // Centrado vertical perfecto
-        
-        background-color: #F8F7F5;
-        z-index: 2;
-        position: relative;
+        flex-direction: column;
+        gap: 2px;
 
-        // Grupo de Textos (Nombre + Visitas)
-        .text-group { 
-            display: flex;
-            flex-direction: column;
-            gap: 2px; // Espacio mínimo entre líneas
-            
-            h3 {
-                font-size: 0.95rem;
-                margin: 0;
-                color: $black;
-                font-family: $font-title;
-                font-weight: 700;
-                line-height: 1.1;
-            }
-
-            p {
-                font-size: 0.75rem;
-                margin: 0;
-                color: #666; // Gris texto secundario
-                font-family: $font-general;
-            }
+        h3 {
+          font-size: 0.95rem;
+          margin: 0;
+          color: $black;
+          font-family: $font-title;
+          font-weight: 700;
+          line-height: 1.1;
         }
 
-        // Icono de Estrella
-        i {
-            font-size: 1.2rem; 
-            cursor: pointer; 
-            transition: transform 0.2s;
-
-            &:hover { transform: scale(1.2); }
-
-            // Estado: Llena (Amarilla)
-            &.bi-star-fill { color: #FFC107; } 
-            
-            // Estado: Vacía (Gris contorno)
-            &.bi-star { color: #B0B0B0; }      
+        p {
+          font-size: 0.75rem;
+          margin: 0;
+          color: #666;
+          font-family: $font-general;
         }
+      }
+
+      i {
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+
+        &.bi-star-fill {
+          color: #ffc107;
+        }
+
+        &.bi-star {
+          color: #b0b0b0;
+        }
+      }
     }
   }
 
-  // Botones de Flecha (Carrusel)
+  // 4. Flechas
   .scroll-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-20%); // Ajuste visual para centrar con respecto a las tarjetas
-      background: $alert-color;
-      border: none;
-      color: $white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-20%);
+    background: $alert-color;
+    border: none;
+    color: $white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 
-      &:hover { 
-          transform: translateY(-20%) scale(1.1); 
-          background-color: darken($alert-color, 10%);
-      }
+    &:hover {
+      transform: translateY(-20%) scale(1.1);
+      background-color: darken($alert-color, 10%);
+    }
 
-      &.left { left: 10px; }
-      &.right { right: 10px; }
-      
-      // Ocultar en celular (se usa el dedo)
-      @media (max-width: 768px) {
-          display: none; 
-      }
+    &.left {
+      left: 10px;
+    }
+    &.right {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }
 
@@ -704,43 +718,45 @@ footer {
 .promo-banner {
   display: flex;
   align-items: center;
-  justify-content: space-between; // Distribuye: Img - Texto - Botón - Img
-  background-color: $container-bg; // Asegúrate de tener esta variable, o usa un gris claro #f9f9f9
+  justify-content: space-between;
+  background-color: $container-bg;
   color: $black;
   font-weight: bold;
   font-family: $font-general;
 
-  // MÁRGENES ESTANDARIZADOS
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // === CAMBIO AQUÍ: MÁRGENES A 50PX ===
+  // Esto asegura el espacio modular correcto
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   border-radius: 10px;
   box-shadow: 0 2px 4px $shadow;
-  padding: 30px 40px; // Un poco más de aire interno
+  padding: 30px 40px;
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
 
   // === RESPONSIVO (Móvil) ===
   @media (max-width: 768px) {
-    flex-direction: column; // Apilar elementos verticalmente
-    text-align: center; // Centrar texto
+    flex-direction: column;
+    text-align: center;
     padding: 30px 20px;
+    
+    // Ajuste opcional: En celular 40px suele verse mejor que 50px
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   // 1. IMÁGENES (Iconos laterales)
   img {
-    width: 150px; // Tamaño para escritorio
+    width: 150px;
     height: auto;
     object-fit: contain;
 
-    // En móvil
     @media (max-width: 768px) {
-      // CAMBIO AQUÍ: Aumentamos el tamaño para que se vea bien
-      width: 130px; // Antes era 80px, ahora es más grande y protagonista
-      margin-bottom: 15px; // Un poco más de espacio debajo
+      width: 130px;
+      margin-bottom: 15px;
 
-      // OPCIONAL: Mantenemos oculta la segunda imagen para que no estorbe
       &:last-child {
         display: none;
       }
@@ -751,9 +767,9 @@ footer {
   p {
     margin: 0;
     text-align: left;
-    font-size: 1.2rem; // Mejor usar rem que px fijos
+    font-size: 1.2rem;
     font-family: $font-general;
-    flex: 1; // Para que el texto ocupe el espacio disponible central
+    flex: 1;
     padding: 0 20px;
     line-height: 1.5;
 
@@ -772,19 +788,19 @@ footer {
     border-radius: 10px;
     box-shadow: 0 2px 4px $shadow;
     font-family: $font-general;
-    padding: 12px 30px; // Padding interno para darle cuerpo al botón
-    text-decoration: none; // Quitar subrayado de enlace
-    white-space: nowrap; // Evita que el texto del botón se parta
+    padding: 12px 30px;
+    text-decoration: none;
+    white-space: nowrap;
     transition: all 0.3s ease;
 
     &:hover {
       background-color: $button-color;
       color: $white;
-      transform: translateY(-2px); // Efecto de elevación sutil
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
-      width: 100%; // Botón ancho completo en móvil para fácil clic
+      width: 100%;
       display: block;
     }
   }
@@ -812,7 +828,6 @@ footer {
   @media (max-width: 992px) {
     flex-direction: column;
     gap: 30px;
-    // En celular podemos reducir un poco si quieres, o dejarlo igual
     margin-top: 40px; 
     margin-bottom: 40px;
   }

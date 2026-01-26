@@ -13949,17 +13949,15 @@ footer .footer-bottom p {
 
 .search-bar-template {
   background-color: #FFFFFF;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 15px 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 50px;
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   max-width: 900px;
-  margin: 15px auto 15px auto;
   z-index: 10;
+  margin: 50px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13969,6 +13967,19 @@ footer .footer-bottom p {
   gap: 15px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .search-bar-template {
+    margin: 40px auto;
+    border-radius: 20px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
 }
 
 .search-bar-template .search-field {
@@ -13985,6 +13996,12 @@ footer .footer-bottom p {
   border-radius: 30px;
   padding: 5px 15px;
   min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .search-bar-template .search-field {
+    width: 100%;
+  }
 }
 
 .search-bar-template .search-field .icon {
@@ -14039,6 +14056,16 @@ footer .footer-bottom p {
   border-left: 1px solid #eee;
 }
 
+@media (max-width: 768px) {
+  .search-bar-template .date-field {
+    width: 100%;
+    border-left: none;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
+
 .search-bar-template .date-field label {
   font-size: 0.75rem;
   font-weight: bold;
@@ -14072,45 +14099,34 @@ footer .footer-bottom p {
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+  .search-bar-template .btn-search {
+    width: 100%;
+  }
+}
+
 .search-bar-template .btn-search:hover {
   background-color: #e1ad11;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .search-bar-template {
-    border-radius: 20px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    margin-top: 20px;
-  }
-  .search-bar-template .search-field,
-  .search-bar-template .date-field,
-  .search-bar-template .btn-search {
-    width: 100%;
-    border-left: none;
-  }
-  .search-bar-template .date-field {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 15px;
-  }
-}
-
 .destinos-container {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 0 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .destinos-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 .destinos-container h2, .destinos-container .h2 {
@@ -14264,11 +14280,18 @@ footer .footer-bottom p {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 0 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .popular-searches {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 .popular-searches h2, .popular-searches .h2 {
@@ -14321,7 +14344,7 @@ footer .footer-bottom p {
   -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  background-color: #F8F7F5;
+  background-color: #f8f7f5;
   border: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14369,7 +14392,7 @@ footer .footer-bottom p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F8F7F5;
+  background-color: #f8f7f5;
   z-index: 2;
   position: relative;
 }
@@ -14416,11 +14439,11 @@ footer .footer-bottom p {
 }
 
 .popular-searches .popular-card .popular-card-content i.bi-star-fill {
-  color: #FFC107;
+  color: #ffc107;
 }
 
 .popular-searches .popular-card .popular-card-content i.bi-star {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .popular-searches .scroll-arrow {
@@ -14485,8 +14508,8 @@ footer .footer-bottom p {
   color: #000000;
   font-weight: bold;
   font-family: "Quicksand", sans-serif;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   border-radius: 10px;
   -webkit-box-shadow: 0 2px 4px #00000033;
           box-shadow: 0 2px 4px #00000033;
@@ -14505,6 +14528,8 @@ footer .footer-bottom p {
             flex-direction: column;
     text-align: center;
     padding: 30px 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
 
