@@ -26,7 +26,7 @@ $font-title: 'Mulish', sans-serif;
 
 @import './node_modules/bootstrap/scss/bootstrap.scss';
 
-// Estilos personalizados
+// ESTILOS GENERALES *------------------------------
 
 // Header Superior
 .header-top {
@@ -379,7 +379,7 @@ footer {
 }
 
 
-//Página de inicio
+// PAGINA DE INICIO (INDEX) *------------------------------
 
 // Sección de Mejores Destinos
 .destinos-container {
@@ -1743,70 +1743,115 @@ footer {
 
 
 
-//Centro de ayuda
+// SECCION DE AYUDA (CONTACTO.HTML) *------------------------------
 
-//Sección de contacto
+// Sección de Contacto 
 .contact-section {
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  
+  margin-top: 50px;
+  margin-bottom: 50px;
 
-  h1{
+  // Ajuste Móvil
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  // Títulos y Textos Generales
+  h1 {
     color: $highlight-color;
     font-family: $font-title;
     font-weight: bold;
     font-size: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
   }
 
-  p{
+  p {
     color: $black;
     font-family: $font-general;
     font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  // Tarjeta de Información (Dirección, Correo, Teléfono)
+  .contact-card {
+    background-color: $container-bg;
+    color: $white;
+    padding: 40px 20px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 10px $shadow;
     
+    // Flexbox para escritorio (Horizontal)
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; 
+    
+    margin-bottom: 50px; 
+
+    // === RESPONSIVO TARJETA (Móvil) ===
+    @media (max-width: 768px) {
+      flex-direction: column; // Se apilan verticalmente
+      gap: 20px; // Espacio entre cada dato
+      align-items: flex-start; // Alineado a la izquierda o center según gusto
+      padding: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $font-general;
+      font-size: 18px;
+      font-weight: bold;
+      
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px; // Espacio entre el emoji y el texto
+      }
+    }
   }
-}
 
-.contact-card {
-  background-color: $container-bg;
-  padding: 20px;
-  border-radius: 10px;
-  color: $white;
-  font-size: 18px;
-  font-family: $font-general;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 0 2px 4px $shadow;
-  margin-bottom: 80px;
-  margin-top: 40px;
-}
+  // Sección del Botón de Chat
+  .chat-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    img {
+      width: 100%;
+      max-width: 250px; 
+      height: auto;
+      margin-bottom: 10px;
+    }
 
-.chat-button-container {
-  text-align: center;
-  margin-bottom: 80px;
+    .chat-button {
+      background-color: $button-color;
+      color: $black;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px; 
+      cursor: pointer;
+      box-shadow: 0 2px 4px $shadow;
+      font-family: $font-general;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease, background-color 0.2s;
 
-  img{
-    width: 300px;
+      &:hover {
+        transform: scale(1.05); 
+        background-color: darken($button-color, 10%);
+      }
+    }
   }
-}
-
-.chat-button {
-  background-color: $button-color;
-  color: $black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px $shadow;
-  font-family: $font-general;
 }
 
 //Sección de preguntas frecuentes

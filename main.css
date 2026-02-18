@@ -15675,8 +15675,15 @@ footer .footer-bottom p {
 
 .contact-section {
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 .contact-section h1, .contact-section .h1 {
@@ -15684,23 +15691,30 @@ footer .footer-bottom p {
   font-family: "Mulish", sans-serif;
   font-weight: bold;
   font-size: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .contact-section h1, .contact-section .h1 {
+    font-size: 32px;
+  }
 }
 
 .contact-section p {
   color: #000000;
   font-family: "Quicksand", sans-serif;
   font-size: 20px;
+  margin-bottom: 30px;
 }
 
-.contact-card {
+.contact-section .contact-card {
   background-color: #FFA85C;
-  padding: 20px;
-  border-radius: 10px;
   color: #FFFFFF;
-  font-size: 18px;
-  font-family: "Quicksand", sans-serif;
-  font-weight: bold;
+  padding: 40px 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 4px 10px #00000033;
+          box-shadow: 0 4px 10px #00000033;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15709,13 +15723,26 @@ footer .footer-bottom p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 2px 4px #00000033;
-          box-shadow: 0 2px 4px #00000033;
-  margin-bottom: 80px;
-  margin-top: 40px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
-.contact-item {
+@media (max-width: 768px) {
+  .contact-section .contact-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 30px;
+  }
+}
+
+.contact-section .contact-card .contact-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15725,27 +15752,64 @@ footer .footer-bottom p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.chat-button-container {
-  text-align: center;
-  margin-bottom: 80px;
+.contact-section .contact-card .contact-item span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
 }
 
-.chat-button-container img {
-  width: 300px;
+.contact-section .chat-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
 }
 
-.chat-button {
+.contact-section .chat-button-container img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.contact-section .chat-button-container .chat-button {
   background-color: #F0C135;
   color: #000000;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 30px;
+  border-radius: 30px;
   cursor: pointer;
   -webkit-box-shadow: 0 2px 4px #00000033;
           box-shadow: 0 2px 4px #00000033;
   font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  -webkit-transition: background-color 0.2s, -webkit-transform 0.2s ease;
+  transition: background-color 0.2s, -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s;
+  transition: transform 0.2s ease, background-color 0.2s, -webkit-transform 0.2s ease;
+}
+
+.contact-section .chat-button-container .chat-button:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  background-color: #e1ad11;
 }
 
 .faq-section {
