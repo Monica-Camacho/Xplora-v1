@@ -807,7 +807,7 @@ footer {
 }
 
 
-// Sección de Ofertas Especiales (Modular y con buen espaciado)
+// Sección de Ofertas Especiales
 .special-offers {
   // 1. ESTRUCTURA GENERAL
   display: flex;
@@ -922,7 +922,7 @@ footer {
 }
 
 
-// Sección de Características (Todo en un solo bloque)
+// Sección de Características
 .features {
   // 1. Contenedor Principal
   display: flex;
@@ -1000,13 +1000,10 @@ footer {
 }
 
 
-// Sección de Clientes / Asociados (Corregida)
-// Sección de Clientes / Asociados (Logos Grandes en Móvil)
+// Sección de Clientes / Asociados
 .clients {
   padding-top: 20px;
   overflow: hidden;
-
-  // === MÁRGENES ESTANDARIZADOS (50px) ===
   margin-top: 50px;
   margin-bottom: 50px;
 
@@ -1024,7 +1021,6 @@ footer {
     // Padding
     padding: 10px;
     
-    // En móvil quitamos casi todo el relleno para que el logo crezca
     @media (max-width: 768px) {
       padding: 0; 
     }
@@ -1042,17 +1038,13 @@ footer {
       // Tamaño Escritorio
       max-width: 200px; 
 
-      // === TAMAÑO MÓVIL (AGRESIVO) ===
+      // === TAMAÑO MÓVIL ===
       @media (max-width: 768px) {
-        // Quitamos filtros
         filter: none; 
         opacity: 1; 
         
-        // ¡Aquí está el cambio clave! 
-        // Permitimos que crezcan mucho más
         max-width: 220px; 
         
-        // Forzamos a que ocupen buen espacio vertical si son logos "cuadrados"
         max-height: 100px; 
       }
 
@@ -1086,64 +1078,146 @@ footer {
 }
 
 
-
-//Sección de carrusel
+// Sección de Carrusel
 .carousel {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 4px $shadow;
-  margin-top: 80px;
-  margin-bottom: 80px;
+
+  // Márgenes estándar
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  // 1. Imágenes
+  .carousel-item img {
+    width: 100%; 
+    height: 500px; 
+    object-fit: cover; 
+    filter: brightness(0.7); 
+    transition: transform 0.5s ease;
+
+    @media (max-width: 768px) {
+      height: 600px;
+    }
+  }
+
+  // 2. Caja de Texto (Caption)
+  .custom-caption {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgba(255, 255, 255, 0.85); 
+    color: $black;
+    font-family: $font-general;
+    font-size: 14px;
+    padding: 30px; 
+    border-radius: 10px;
+    
+    // === CENTRADO ABSOLUTO ===
+    position: absolute; 
+    top: 50%;              
+    transform: translateY(-50%); 
+    bottom: auto;           
+    left: 0;
+    right: 0;
+    margin: auto;          
+    max-width: 60%;       
+    // ==========================================
+
+    // Ajustes específicos para Móvil
+    @media (max-width: 768px) {
+      width: 85%;
+      max-width: 85%;
+      padding: 30px 20px;
+    }
+
+    // Título
+    h5 {
+      color: $highlight-color;
+      font-family: $font-title;
+      font-weight: bold;
+      font-size: 28px;
+      margin-bottom: 15px;
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+    }
+    
+    // Párrafo
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      
+      @media (max-width: 768px) {
+        margin-bottom: 15px;
+      }
+    }
+
+    // Listas
+    ul {
+      text-align: left;
+      padding-left: 20px;
+      margin-bottom: 15px;
+      @media (max-width: 768px) {
+        display: none; 
+      }
+    }
+
+    // Botón
+    button, .btn {
+      background-color: $button-color;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: $black;
+      cursor: pointer;
+      margin-top: 10px;
+      font-family: $font-general;
+      font-weight: bold;
+      box-shadow: 0 2px 4px $shadow;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: darken($button-color, 10%);
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        display: block;
+        padding: 12px 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // 3. Flechas
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: $alert-color;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    background-size: 50%, 50%; 
+  }
+
+  @media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+      display: none;
+    }
+  }
 }
-
-.carousel-item img {
-  width: 197px;
-  height: 400px;
-  filter: brightness(0.7);
-
-}
-
-.custom-caption {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.804);
-  color: $black;
-  font-family: $font-general;
-  font-size: 14px;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 60%;
-  margin: auto;
-}
-
-.custom-caption h5 {
-  color: $highlight-color;
-  font-family: $font-title;
-  font-weight: bold;
-  font-size: 28px;
-}
-
-.custom-caption button {
-  background-color: $button-color;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  color: $black;
-  cursor: pointer;
-  margin-top: 10px;
-  font-family: $font-general;
-  box-shadow: 0 2px 4px $shadow;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: $alert-color;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-}
-
 
 
 //Barra de búsqueda de vuelos
