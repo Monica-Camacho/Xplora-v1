@@ -32,11 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Función para el swiper
-    if (typeof Swiper !== "undefined" && document.querySelector('.swiper')) {
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 4,
-            spaceBetween: 30,
+    // Función para el swiper (SECCIÓN ASOCIADOS)
+    if (typeof Swiper !== "undefined" && document.querySelector('.clients-slider')) {
+        const swiper = new Swiper('.clients-slider', {
+            // 1. CONFIGURACIÓN BASE (Móvil)
+            slidesPerView: 2, // Mostramos solo 2
+            spaceBetween: 15, // Espacio ajustado
+            loop: true,       // Carrusel infinito
+
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -45,6 +48,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 delay: 2500,
                 disableOnInteraction: false,
             },
+
+            // 2. BREAKPOINTS (Ajustes para pantallas más grandes)
+            breakpoints: {
+                // Tablet (>= 640px): Mostramos 3
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                // Escritorio (>= 1024px): Mostramos 5 (o 4 si prefieres)
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            }
         });
     }
 

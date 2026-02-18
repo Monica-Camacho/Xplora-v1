@@ -1000,6 +1000,93 @@ footer {
 }
 
 
+// Sección de Clientes / Asociados (Corregida)
+// Sección de Clientes / Asociados (Logos Grandes en Móvil)
+.clients {
+  padding-top: 20px;
+  overflow: hidden;
+
+  // === MÁRGENES ESTANDARIZADOS (50px) ===
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  // Estilos del Slider
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // Padding
+    padding: 10px;
+    
+    // En móvil quitamos casi todo el relleno para que el logo crezca
+    @media (max-width: 768px) {
+      padding: 0; 
+    }
+
+    img {
+      // Base (Escritorio)
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      filter: grayscale(100%);
+      cursor: pointer;
+      width: 100%; 
+      height: auto;
+      object-fit: contain;
+      
+      // Tamaño Escritorio
+      max-width: 200px; 
+
+      // === TAMAÑO MÓVIL (AGRESIVO) ===
+      @media (max-width: 768px) {
+        // Quitamos filtros
+        filter: none; 
+        opacity: 1; 
+        
+        // ¡Aquí está el cambio clave! 
+        // Permitimos que crezcan mucho más
+        max-width: 220px; 
+        
+        // Forzamos a que ocupen buen espacio vertical si son logos "cuadrados"
+        max-height: 100px; 
+      }
+
+      &:hover {
+        filter: none;
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // Paginación
+  .swiper-pagination {
+    margin-top: 30px;
+    position: relative;
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background-color: $black;
+      opacity: 0.2;
+      transition: all 0.3s ease;
+
+      &-active {
+        background-color: $alert-color;
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+
+
 //Sección de carrusel
 .carousel {
   border-radius: 10px;
@@ -1057,39 +1144,6 @@ footer {
   height: 30px;
 }
 
-//Sección de clientes
-.clients {
-  padding-top: 20px;
-  overflow: hidden;
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100%);
-}
-
-.clients .swiper-slide img:hover {
-  filter: none;
-  opacity: 1;
-}
-
-.clients .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.clients .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: $black;
-}
-
-.clients .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: $alert-color;
-}
 
 
 //Barra de búsqueda de vuelos
